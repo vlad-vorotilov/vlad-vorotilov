@@ -36,7 +36,8 @@ Many banks will require [proof of address](https://statrys.com/blog/what-is-a-pr
 At least Monzo and Revolut do not require proof of address, so I recommend applying for both.
 
 If a Financial Institution is not treating you in a fair way use [Financial Ombudsman Service](https://www.financial-ombudsman.org.uk/)
-- Tell your Financial Institution that you would like to file `a formal complaint`, explain what is the whole situation in that complain and ask for `final written response`. It will take few weeks
+- Tell your Financial Institution that you would like to file `a formal complaint`
+- Explain what is the whole situation in that complain, tell they how they can make things right and ask for `final written response`. It will take few weeks
 - This usually helps to get someone from qualified support to actually look at your case and make things right
 - If you are not satisfied with resolution, file a complaint on [Financial Ombudsman Service website](https://www.financial-ombudsman.org.uk/), it will take even more weeks
 
