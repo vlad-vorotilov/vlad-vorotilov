@@ -17,12 +17,28 @@ Apply for a UK bank account right after you get a SIM card.
 You need a UK bank account to proceed with renting an apartment for a long term. 
 
 There are 3 types of Current account providers you should know about: 
-- High street banks: HSBC, Barklays, Lloyds, etc. They have physical branches and bad customer service. Good for optional perks like overseas health insurance for the whole family or always accepting SWIFT transfers (even from Russia). They might they block your transaction for paying rent and ask you to call them and wait 1 hour on the line to get it unblocked.
-- Digital banks: Starling, Monzo. Good banks for day-to-day use.
-- Revolut: not a bank (no banking license in the UK) but has a number of convenient features which other 2 categories do not provide. It is also suitable for paying rent, bills and daily spending. I wouldn't keep too much money with them.
+- High street banks: HSBC, Barklays, Lloyds, etc. They have physical branches.
+  - `+` Perks like overseas health insurance for the whole family (on premium account)
+  - `+` Always accepting SWIFT transfers (even from Russia) 
+  - `-` Foreign transaction fees
+  - `-` Bad customer service
+  - `-` They might they block your transaction for paying rent and ask you to call them and wait 1 hour on the line to get it unblocked.
+- Digital banks: Starling, Monzo. **Good banks for day-to-day use.**
+- Revolut: not a bank (no banking license in the UK, so no FSCS protection)
+  - `+` Good exchange rates
+  - `+` Paying from currency account overseas with same card
+  - `+` One use cards in app for websites you don't trust
+  - `+` Domestic transfer account in the US
+  - `+` It is also suitable for paying rent, bills and daily spending
+  - `-` They used to block accounts for few months in the past, so I wouldn't keep too much money with them
 
 Many banks will require [proof of address](https://statrys.com/blog/what-is-a-proof-of-address) for your current residence.\
 At least Monzo and Revolut do not require proof of address, so I recommend applying for both.
+
+If a Financial Institution is not treating you in a fair way use [Financial Ombudsman Service](https://www.financial-ombudsman.org.uk/)
+- Tell your Financial Institution that you would like to file `a formal complaint`, explain what is the whole situation in that complain and ask for `final written response`. It will take few weeks
+- This usually helps to get someone from qualified support to actually look at your case and make things right
+- If you are not satisfied with resolution, file a complaint on [Financial Ombudsman Service website](https://www.financial-ombudsman.org.uk/), it will take even more weeks
 
 ## Transport
 No need to get an Oyster card, paying by bank card/phone will cost the same, just make sure you use the same card as there is a daily cap on Transport for London (TfL).\
@@ -49,11 +65,16 @@ There could be competition for the best apartments so you might need to overbid.
 Worst season to search for an apartment is September.
 
 Read about renting more, there are government supplied guides.\
-Landlord/agent will perform a reference check, make sure to ping them every other day if they need more information from you. 
+Landlord/agent will perform a reference check, make sure to ping them every other day if they need more information from you.
+
+There is [Housing Ombudsman](https://www.housing-ombudsman.org.uk/), it can help to resolve problems with dishonest landlords.
 
 ## Utilities
-You will need to make your utilities contracts for: Water (it’s Thames Water in London), Energy (gas and electricity) it usually will be the same company for both, Broadband (pick fastest speed you can get).
-Notify the Council about all people moving in, they will send you Council tax invoice. 
+You will need to make your utilities contracts for: 
+- Water (it’s Thames Water in London)
+- Energy (gas and electricity) it usually will be the same company for both
+- Broadband (pick fastest speed you can get)
+- Notify the Council about all people moving in, they will send you Council tax invoice
 
 ## Medical
 Register with a GP nearby, preferably nearby. Usually you can register online. Seek help with non urgent matters through GP. You can ask if your matter is urgent by calling 111
