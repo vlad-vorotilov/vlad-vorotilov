@@ -22,12 +22,12 @@ There are 3 types of Current account providers you should know about:
   - `+` Always accepting SWIFT transfers (even from Russia) 
   - `-` Foreign transaction fees
   - `-` Bad customer service
-  - `-` They might they block your transaction for paying rent and ask you to call them and wait 1 hour on the line to get it unblocked.
+  - `-` They might block large transaction (like paying rent) and ask you to call them and wait 1 hour on the line to get it unblocked.
 - Digital banks: Starling, Monzo. **Good banks for day-to-day use.**
 - Revolut: not a bank (no banking license in the UK, so no FSCS protection)
   - `+` Good exchange rates
   - `+` Paying from currency account overseas with same card
-  - `+` One use cards in app for websites you don't trust
+  - `+` Disposable cards for websites you don't trust
   - `+` Domestic transfer account in the US
   - `+` It is also suitable for paying rent, bills and daily spending
   - `-` They used to block accounts for few months in the past, so I wouldn't keep too much money with them
