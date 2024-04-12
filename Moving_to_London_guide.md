@@ -19,7 +19,8 @@ You need a UK bank account to proceed with renting an apartment for a long term.
 There are 3 types of Current account providers you should know about: 
 - High street banks: HSBC, Barklays, Lloyds, etc. They have physical branches.
   - `+` Perks like overseas health insurance for the whole family (on premium account)
-  - `+` Always accepting SWIFT transfers (even from Russia) 
+  - `+` Always accepting SWIFT transfers (even from Russia)
+  - `+` Larger cash/ATM withdrawal limits
   - `-` Foreign transaction fees
   - `-` Bad customer service
   - `-` They might block large transaction (like paying rent) and ask you to call them and wait 1 hour on the line to get it unblocked.
@@ -47,7 +48,7 @@ If your travel does not include Zone 1, it will be almost 2 times cheaper!
 
 For route planning use the Citymapper app, it usually works better than Google Maps.\
 For travel to nearby cities get a Railcard it will give you a massive 30%+ discount.\
-There are Railcards for one person, but they usually have age restrictions, Two Together card does not have age restriction but requires both people to travel together.\
+There are Railcards for one person, but they usually have age restrictions, Two Together card does not have age restriction but requires both people to travel together.
 
 Cycling might be a good option for short distances, try Borisbikes (red Santander bikes sharing).
 If you own a bike, don’t leave it without a proper lock or it **will get stolen for sure**.
@@ -84,13 +85,16 @@ For life threatening matters either call emergency 999 or get to nearest Acciden
 If your life is not in danger but you still need urgent help go to A&E.
 
 ## Savings
-If you don’t use all your money, set up [Instant Access Savings Account](https://www.moneysavingexpert.com/savings/savings-accounts-best-interest/) and get some interest on it\
-[Read more about ISA](https://www.gov.uk/individual-savings-accounts) it’s Tax free savings account.
+If you don’t use all your money, set up [Instant Access Savings Account](https://www.moneysavingexpert.com/savings/savings-accounts-best-interest/) and get some interest on it
+
+[Read more about ISA](https://www.gov.uk/individual-savings-accounts) it’s Tax free investment account, Trading212 ISA even [pays interest](https://www.trading212.com/interest-on-cash) on uninvested cash ([referral link](https://www.trading212.com/invite/199OTsiWJs)).
+
+Consider getting Amex credit card for [Section 75 refund protection](https://www.moneysavingexpert.com/reclaim/section75-protect-your-purchases/) on purchases over £100 ([referral link](https://americanexpress.com/en-gb/referral/platinum-cashback-everyday?ref=vLADIvdJoF&XL=MNANS))
 
 ## Shops
 Amazon works well for a lot of stuff\
 Furniture: IKEA, John Levis, Dunelm\
-Electronics: Currys, Argos,
+Electronics: Currys, Argos, Amazon
 
 ## Driving
 [Check](https://www.gov.uk/driving-nongb-licence) if you can drive with non-UK driving license.\
