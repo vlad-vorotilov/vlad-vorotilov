@@ -3,7 +3,7 @@
 // @namespace   https://github.com/vlad-vorotilov/
 // @match       https://driverpracticaltest.dvsa.gov.uk/application*
 // @grant       GM.getValue
-// @version     1.0
+// @version     1.1
 // @author      vlad-vorotilov
 // @description Script to automate notification about DVSA driving test, requires "licence", "postcode" values to be set
 // @top-level-await
@@ -11,8 +11,9 @@
 
 const START_PAGE = "https://driverpracticaltest.dvsa.gov.uk/application";
 
-const FINAL_WAIT_SEC = 5 * 60;
+const FINAL_WAIT_SEC = 15 * 60;
 const MIN_SEARCH_RESULTS = 6;
+const NOTIFY_NO_APPOINTMENTS = false;
 
 function log(val) {
   const now = new Date();
@@ -70,7 +71,7 @@ function parseTestCentres() {
   for (const testCentre of testCentres) {
     const name = testCentre.querySelector('h4').innerHTML;
     const whenAvailable = testCentre.querySelector('h5').innerHTML.slice(13);
-    if (whenAvailable.includes("No tests found on any date")) {
+    if (whenAvailable.includes("No tests found on any date") && !NOTIFY_NO_APPOINTMENTS) {
       continue;
     }
 
@@ -79,12 +80,38 @@ function parseTestCentres() {
   return availableTestCentres;
 }
 
-function sendNotification(title, body) {
+
+async function sendTelegramMessage(title, message) {
+  const botToken = await GM.getValue("telegramBotToken");
+  const botUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
+  const chatId = await GM.getValue("telegramChatId");
+  const text = `*${title}*\n${message}`
+  const data = {
+    chat_id: chatId,
+    text: text,
+    parse_mode: "markdown"
+  }
+  const response = await fetch(botUrl, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  return response.ok;
+}
+
+function sendDesktopNotification(title, message) {
   if (Notification.permission !== 'granted') {
     Notification.requestPermission();
   } else {
-    const notification = new Notification(title, { body: body });
+    const notification = new Notification(title, { body: message });
   }
+}
+
+async function sendNotification(title, message) {
+  await sendTelegramMessage(title, message);
+  sendDesktopNotification(title, message);
 }
 
 async function processTestCentersRes() {
@@ -94,18 +121,23 @@ async function processTestCentersRes() {
   } else {
     var message = "";
     for (const [name, when] of availableTestCentres) {
-      message += `${name}:${when};`;
+      message += `${name} : ${when}\n`;
     }
     log(message);
-    sendNotification("Driving Appointment", message);
+    await sendNotification("Driving Appointment", message);
   }
   await wait(FINAL_WAIT_SEC);
   location.reload();
 }
 
 function goToStart() {
-  sendNotification("Driving Appointment", "Had to start again!");
   document.location.href = START_PAGE
+}
+
+async function handleBotCheck() {
+  sendDesktopNotification("Driving Appointment", "Bot check!");
+  await wait(FINAL_WAIT_SEC);
+  location.reload();
 }
 
 async function main() {
@@ -124,6 +156,8 @@ async function main() {
     } else {
       await processTestCentersRes();
     }
+  } else if (document.title === "") {
+    await handleBotCheck();
   } else {
     goToStart();
   }
