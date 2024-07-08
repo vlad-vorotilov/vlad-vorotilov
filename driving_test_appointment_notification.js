@@ -3,7 +3,7 @@
 // @namespace   https://github.com/vlad-vorotilov/
 // @match       https://driverpracticaltest.dvsa.gov.uk/application*
 // @grant       GM.getValue
-// @version     1.1
+// @version     1.2
 // @author      vlad-vorotilov
 // @description Script to automate notification about DVSA driving test, requires "licence", "postcode" values to be set
 // @top-level-await
@@ -11,8 +11,9 @@
 
 const START_PAGE = "https://driverpracticaltest.dvsa.gov.uk/application";
 
-const FINAL_WAIT_SEC = 15 * 60;
-const MIN_SEARCH_RESULTS = 6;
+const FINAL_WAIT_SEC = 5 * 60;
+const MORE_WAIT_SEC = 9;
+const NUM_RES_TO_CHECK = 6;
 const NOTIFY_NO_APPOINTMENTS = false;
 
 function log(val) {
@@ -31,6 +32,7 @@ function formatTodayDate() {
 
 async function wait(min_sec = 1, delta_sec = 3) {
   const randTime = Math.random() * (delta_sec) + min_sec;
+  log(`Waiting for ${randTime} sec`);
   await new Promise(r => setTimeout(r, randTime * 1000));
 }
 
@@ -62,46 +64,12 @@ async function fillPostcode() {
 }
 
 async function getMoreResults() {
+  await wait(MORE_WAIT_SEC);
   $('#fetch-more-centres')[0].click();
 }
 
-function parseTestCentres() {
-  const testCentres = $('.test-centre-details-link');
-  var availableTestCentres = new Map();
-  for (const testCentre of testCentres) {
-    const name = testCentre.querySelector('h4').innerHTML;
-    const whenAvailable = testCentre.querySelector('h5').innerHTML.slice(13);
-    if (whenAvailable.includes("No tests found on any date") && !NOTIFY_NO_APPOINTMENTS) {
-      continue;
-    }
-
-    availableTestCentres.set(name, whenAvailable);
-  }
-  return availableTestCentres;
-}
-
-
-async function sendTelegramMessage(title, message) {
-  const botToken = await GM.getValue("telegramBotToken");
-  const botUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
-  const chatId = await GM.getValue("telegramChatId");
-  const text = `*${title}*\n${message}`
-  const data = {
-    chat_id: chatId,
-    text: text,
-    parse_mode: "markdown"
-  }
-  const response = await fetch(botUrl, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
-  return response.ok;
-}
-
-function sendDesktopNotification(title, message) {
+function sendNotification(title, message) {
+  log(`${title}; ${message}`);
   if (Notification.permission !== 'granted') {
     Notification.requestPermission();
   } else {
@@ -109,57 +77,62 @@ function sendDesktopNotification(title, message) {
   }
 }
 
-async function sendNotification(title, message) {
-  await sendTelegramMessage(title, message);
-  sendDesktopNotification(title, message);
+function processTestCentres() {
+  const testCentres = $('.test-centre-details-link');
+  for(var i = 0; i < Math.min(NUM_RES_TO_CHECK, testCentres.length); i++) {
+    const name = testCentres[i].querySelector('h4').innerHTML;
+    const whenAvailable = testCentres[i].querySelector('h5').innerHTML.slice(13);
+    if (whenAvailable.includes("No tests found on any date") && !NOTIFY_NO_APPOINTMENTS) {
+      continue;
+    }
+    sendNotification("Driving Appointment", `${name} : ${whenAvailable}`);
+    testCentres[i].click();
+    return;
+  }
 }
 
-async function processTestCentersRes() {
-  const availableTestCentres = parseTestCentres();
-  if (availableTestCentres.size == 0) {
-    log("No appointments");
-  } else {
-    var message = "";
-    for (const [name, when] of availableTestCentres) {
-      message += `${name} : ${when}\n`;
-    }
-    log(message);
-    await sendNotification("Driving Appointment", message);
+function selectTime() {
+  const bookableDates = document.getElementsByClassName("BookingCalendar-date--bookable");
+  for(const date of bookableDates) {
+    date.getElementsByClassName("BookingCalendar-dateLink")[0].click();
+    break;
   }
-  await wait(FINAL_WAIT_SEC);
-  location.reload();
 }
 
 function goToStart() {
   document.location.href = START_PAGE
 }
 
-async function handleBotCheck() {
-  sendDesktopNotification("Driving Appointment", "Bot check!");
+async function unknownState() {
+  sendDesktopNotification("Driving Appointment", "UNKNOWN STATE");
   await wait(FINAL_WAIT_SEC);
   location.reload();
 }
 
 async function main() {
+  if(document.title === "Test centre" && $('.test-centre-details-link').length > 0) {
+    processTestCentres();
+  } else if (document.title === "Test date / time — test times available") {
+    // selectTime();
+    // temp wait until further logic is done
+    await wait(FINAL_WAIT_SEC);
+  }
+
   await wait();
-  if (document.title.includes("Type of test")) {
+  if (document.title === "Type of test") {
     await selectCar();
-  } else if (document.title.includes("Licence details")) {
+  } else if (document.title === "Licence details") {
     await fillLicense();
-  } else if (document.title.includes("Test date")) {
+  } else if (document.title === "Test date") {
     await selectDate();
-  } else if (document.title.includes("Test centre")) {
-    if ($('#search-results').length == 0) {
-      await fillPostcode();
-    } else if ($('.test-centre-details-link').length < MIN_SEARCH_RESULTS) {
+  } else if (document.title === "Test centre") {
+    if ($('#fetch-more-centres').length > 0) {
       await getMoreResults();
     } else {
-      await processTestCentersRes();
+      await fillPostcode();
     }
-  } else if (document.title === "") {
-    await handleBotCheck();
   } else {
-    goToStart();
+    await unknownState();
   }
 }
 
