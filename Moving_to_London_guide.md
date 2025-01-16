@@ -98,7 +98,7 @@ If you don’t use all your money, set up [Instant Access Savings Account](https
 **Beware** all interest from savings account taxed at Income Tax Rates!
 
 For Tax-Free Savings/Investment:
-* [Read more about ISA](https://www.gov.uk/individual-savings-accounts) it’s Tax free investment account, Trading212 ISA even [pays interest](https://www.trading212.com/interest-on-cash) on uninvested cash ([referral link](https://www.trading212.com/invite/199OTsiWJs)).
+* [Read more about ISA](https://www.gov.uk/individual-savings-accounts) it’s Tax free investment account, Trading212 ISA even [pays interest](https://www.trading212.com/interest-on-cash) on uninvested cash (only in ISA account) and has Card linked to Investement account balance with cashback.
 * [Read more about Premium Bonds](https://www.moneysavingexpert.com/savings/premium-bonds/)
 
 Consider getting Amex credit card for [Section 75 refund protection](https://www.moneysavingexpert.com/reclaim/section75-protect-your-purchases/) on purchases over £100 ([referral link](https://americanexpress.com/en-gb/referral/platinum-cashback-everyday?ref=vLADIvdJoF&XL=MNANS))
