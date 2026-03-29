@@ -31,7 +31,7 @@ There are 3 types of Current account providers you should know about:
   - `-` Bad customer service
   - `-` They might block large transaction (like paying rent) and ask you to call them and wait 1 hour on the line to get it unblocked.
 - Digital banks: Starling, Monzo, Chase. **Good banks for day-to-day use.**
-- Revolut: almost a bank, but not yet (getting banking license in the UK, so no FSCS protection)
+- Revolut: almost a bank (very soon)
   - `+` Good exchange rates
   - `+` Paying from currency account overseas with same card
   - `+` Disposable cards for websites you don't trust

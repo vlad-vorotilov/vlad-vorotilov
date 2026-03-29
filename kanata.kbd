@@ -1,0 +1,52 @@
+(defcfg
+  process-unmapped-keys yes
+  log-layer-changes no
+)
+
+(defsrc
+  caps
+  lsft rsft
+  ralt
+)
+
+(deflayer base
+  @nav
+  @shift-left @shift-right
+  esc
+)
+
+(defalias
+  nav          (layer-while-held navigation)
+
+  shift-left   (fork lsft caps (rsft))
+  shift-right  (fork rsft caps (lsft))
+
+  word-left         C-left
+  word-right        C-right
+  word-delete-left  C-bspc
+  word-delete-right C-del
+)
+
+(deflayermap (navigation)
+  j    left
+  l    right
+  i    up
+  k    down
+
+  h    @word-left
+  scln @word-right
+
+  u    home
+  o    end
+
+  m    bspc
+  ,    del
+  n    @word-delete-left
+  .    @word-delete-right
+
+  spc  ret
+  f    C-f
+  s    C-c
+  d    C-v
+  lalt C-z
+)
