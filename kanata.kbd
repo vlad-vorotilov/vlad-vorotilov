@@ -6,13 +6,11 @@
 (defsrc
   caps
   lsft rsft
-  ralt
 )
 
 (deflayer base
   @nav
   @shift-left @shift-right
-  esc
 )
 
 (defalias
@@ -48,5 +46,5 @@
   f    C-f
   s    C-c
   d    C-v
-  lalt C-z
+  lalt esc
 )
